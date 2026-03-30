@@ -42,13 +42,13 @@ public class SimulationDashboard extends JFrame {
     private JSpinner frameCountSpinner;
     private JComboBox<String> stepAlgoCombo;
     private JLabel pageSummaryLabel;
-    private SimpleBarChartPanel pageChartPanel;
+    private LineGraphPanel pageChartPanel;
 
     private JTextArea processInputArea;
     private JSpinner quantumSpinner;
     private JTextArea ganttOutputArea;
     private JLabel cpuSummaryLabel;
-    private SimpleBarChartPanel cpuChartPanel;
+    private LineGraphPanel cpuChartPanel;
 
     private JComboBox<String> aiModeCombo;
     private JComboBox<String> aiDifficultyCombo;
@@ -196,7 +196,7 @@ public class SimulationDashboard extends JFrame {
         JTable metricsTable = new JTable(pageMetricsModel);
         metricsTable.setRowHeight(24);
 
-        pageChartPanel = new SimpleBarChartPanel();
+        pageChartPanel = new LineGraphPanel();
         pageChartPanel.setPreferredSize(new Dimension(500, 300));
 
         JPanel left = new JPanel(new BorderLayout());
@@ -204,7 +204,7 @@ public class SimulationDashboard extends JFrame {
         left.add(new JScrollPane(metricsTable), BorderLayout.CENTER);
 
         JPanel right = new JPanel(new BorderLayout());
-        right.setBorder(BorderFactory.createTitledBorder("Fault Count Chart"));
+        right.setBorder(BorderFactory.createTitledBorder("Fault Count Graph"));
         right.add(pageChartPanel, BorderLayout.CENTER);
 
         center.add(left);
@@ -271,9 +271,9 @@ public class SimulationDashboard extends JFrame {
         left.setBorder(BorderFactory.createTitledBorder("CPU Metrics"));
         left.add(new JScrollPane(cpuTable), BorderLayout.CENTER);
 
-        cpuChartPanel = new SimpleBarChartPanel();
+        cpuChartPanel = new LineGraphPanel();
         JPanel right = new JPanel(new BorderLayout());
-        right.setBorder(BorderFactory.createTitledBorder("Average Waiting Time Chart"));
+        right.setBorder(BorderFactory.createTitledBorder("Average Waiting Time Graph"));
         right.add(cpuChartPanel, BorderLayout.CENTER);
 
         center.add(left);
@@ -384,7 +384,7 @@ public class SimulationDashboard extends JFrame {
                 }
             }
 
-            pageChartPanel.setChartData(
+            pageChartPanel.setGraphData(
                     faultMap,
                     "Page Fault Comparison",
                     "Faults"
@@ -437,7 +437,7 @@ public class SimulationDashboard extends JFrame {
                 ganttOutputArea.append(metric.algorithm + ": " + formatSlots(metric.slots) + "\n\n");
             }
 
-            cpuChartPanel.setChartData(
+            cpuChartPanel.setGraphData(
                     CpuSchedulingAnalyzer.waitingForChart(metrics),
                     "Average Waiting Time",
                     "Time Units"
