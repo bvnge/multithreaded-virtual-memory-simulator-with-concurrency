@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Memory Simulator Suite - Complete Documentation</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 12pt;
+            line-height: 1.6;
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 1in;
+            background-color: white;
+            color: black;
+        }
+        h1 {
+            font-size: 18pt;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 24pt;
+            page-break-after: avoid;
+        }
+        h2 {
+            font-size: 14pt;
+            font-weight: bold;
+            margin-top: 18pt;
+            margin-bottom: 12pt;
+            page-break-after: avoid;
+        }
+        h3 {
+            font-size: 12pt;
+            font-weight: bold;
+            margin-top: 12pt;
+            margin-bottom: 6pt;
+            page-break-after: avoid;
+        }
+        h4 {
+            font-size: 12pt;
+            font-weight: bold;
+            font-style: italic;
+            margin-top: 10pt;
+            margin-bottom: 6pt;
+            page-break-after: avoid;
+        }
+        p {
+            margin: 0 0 12pt 0;
+            text-align: justify;
+        }
+        ul, ol {
+            margin: 0 0 12pt 0;
+            padding-left: 40pt;
+        }
+        li {
+            margin-bottom: 6pt;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 10pt;
+            background-color: #f5f5f5;
+            padding: 2pt 4pt;
+        }
+        pre {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 10pt;
+            background-color: #f5f5f5;
+            padding: 12pt;
+            margin: 0 0 12pt 0;
+            overflow-x: auto;
+            border: 1pt solid #ddd;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 0 0 12pt 0;
+        }
+        th, td {
+            border: 1pt solid black;
+            padding: 6pt;
+            text-align: left;
+        }
+        th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+        .toc {
+            margin-bottom: 24pt;
+        }
+        .toc-item {
+            margin-left: 20pt;
+        }
+        .section-number {
+            font-weight: bold;
+        }
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Virtual Memory Simulator Suite<br>Complete Educational Tool</h1>
+
+<p style="text-align: center; margin-bottom: 36pt;">
+    <strong>Final Year Project - Demand Paging, Multithreading & Concurrency</strong><br>
+    Information Technology<br>
+    2026
+</p>
+
+<div class="toc">
+    <h2>Table of Contents</h2>
+    <p class="toc-item">1. Project Overview</p>
+    <p class="toc-item">2. System Architecture</p>
+    <p class="toc-item">3. Core Applications</p>
+    <p class="toc-item">4. Features and Functionality</p>
+    <p class="toc-item">5. Algorithm Implementations</p>
+    <p class="toc-item">6. AI Integration</p>
+    <p class="toc-item">7. Installation and Usage</p>
+    <p class="toc-item">8. Educational Value</p>
+    <p class="toc-item">9. Technical Specifications</p>
+    <p class="toc-item">10. Conclusion</p>
+</div>
+
+<h2>1. Project Overview</h2>
+
+<h3>1.1 Introduction</h3>
+<p>This project is a comprehensive educational simulator suite featuring two powerful applications for demonstrating virtual memory concepts, multithreading, concurrency, synchronization, and page replacement algorithms. It provides interactive Java Swing-based graphical user interfaces where students can learn both single-threaded and multithreaded demand paging concepts through visual simulation.</p>
+
+<h3>1.2 Project Objectives</h3>
+<p>The primary objectives of this project are:</p>
+<ul>
+    <li>To provide an interactive learning environment for operating system concepts</li>
+    <li>To demonstrate page replacement algorithms visually</li>
+    <li>To simulate multithreaded execution with concurrency control</li>
+    <li>To integrate artificial intelligence for intelligent analysis and recommendations</li>
+    <li>To support research and experimental analysis of algorithm performance</li>
+</ul>
+
+<h3>1.3 Target Audience</h3>
+<p>This simulator suite is designed for:</p>
+<ul>
+    <li>Computer Science students learning Operating Systems</li>
+    <li>Educators teaching OS and system programming courses</li>
+    <li>Researchers analyzing algorithm performance characteristics</li>
+    <li>Self-learners exploring operating system concepts</li>
+</ul>
+
+<h3>1.4 Technology Stack</h3>
+<table>
+    <tr>
+        <th>Component</th>
+        <th>Technology</th>
+    </tr>
+    <tr>
+        <td>Programming Language</td>
+        <td>Java (JDK 11 or higher)</td>
+    </tr>
+    <tr>
+        <td>GUI Framework</td>
+        <td>Java Swing</td>
+    </tr>
+    <tr>
+        <td>AI Integration</td>
+        <td>Google Gemini 3 Flash API</td>
+    </tr>
+    <tr>
+        <td>Architecture Pattern</td>
+        <td>Model-View-Controller (MVC)</td>
+    </tr>
+</table>
+
+<h2>2. System Architecture</h2>
+
+<h3>2.1 Component Hierarchy</h3>
+<p>The system is organized into three main tiers:</p>
+
+<h4>Main Entry Points</h4>
+<ul>
+    <li><strong>SimulationDashboard</strong> - Integrated hub providing access to all features</li>
+    <li><strong>DemandPagingGUI</strong> - Single-thread page replacement simulator</li>
+    <li><strong>MultiThreadGUI</strong> - Multithreaded concurrency simulator</li>
+</ul>
+
+<h4>Core Engines</h4>
+<ul>
+    <li><strong>PageReplacementAnalyzer</strong> - Analyzes page replacement algorithms</li>
+    <li><strong>CpuSchedulingAnalyzer</strong> - Analyzes CPU scheduling algorithms</li>
+    <li><strong>MultiThreadSimulator</strong> - Core multithreaded simulation engine</li>
+</ul>
+
+<h4>Supporting Components</h4>
+<ul>
+    <li><strong>ProcessThread</strong> - Thread representation with state management</li>
+    <li><strong>ThreadScheduler</strong> - Implements scheduling algorithms</li>
+    <li><strong>LockResource</strong> - Mutex and semaphore implementation</li>
+    <li><strong>DeadlockDetector</strong> - Detects deadlock conditions</li>
+</ul>
+
+<h4>AI Components</h4>
+<ul>
+    <li><strong>AIResearchAssistant</strong> - AI feature orchestration</li>
+    <li><strong>GeminiAIClient</strong> - API client for Gemini integration</li>
+    <li><strong>AIConfigManager</strong> - Configuration management</li>
+</ul>
+
+<h3>2.2 File Structure</h3>
+<p>The project consists of the following Java source files:</p>
+<ul>
+    <li>SimulationDashboard.java - Main dashboard interface</li>
+    <li>DemandPagingGUI.java - Single-thread simulator GUI</li>
+    <li>MultiThreadGUI.java - Multithread simulator GUI</li>
+    <li>DemandPaging.java - Core paging logic</li>
+    <li>PageReplacementAnalyzer.java - Page algorithm analysis</li>
+    <li>CpuSchedulingAnalyzer.java - Scheduling analysis</li>
+    <li>MultiThreadSimulator.java - Concurrency engine</li>
+    <li>ProcessThread.java - Thread representation</li>
+    <li>ThreadScheduler.java - Scheduling implementation</li>
+    <li>LockResource.java - Synchronization primitives</li>
+    <li>DeadlockDetector.java - Deadlock detection</li>
+    <li>BarChartFrame.java - Visualization component</li>
+    <li>LineGraphPanel.java - Graph visualization</li>
+    <li>SimpleBarChartPanel.java - Chart component</li>
+    <li>AIResearchAssistant.java - AI integration</li>
+    <li>GeminiAIClient.java - API client</li>
+    <li>AIConfigManager.java - Configuration manager</li>
+    <li>SimulationStore.java - Data storage</li>
+</ul>
+
+<h2>3. Core Applications</h2>
+
+<h3>3.1 SimulationDashboard - Integrated Hub</h3>
+<p>The SimulationDashboard serves as the central control panel that unifies all simulation tools with analysis capabilities and AI integration. It provides a tabbed interface with five main sections.</p>
+
+<h4>3.1.1 Launch Existing Simulators Tab</h4>
+<p>This tab provides quick access to standalone simulators and AI configuration controls:</p>
+<ul>
+    <li>Buttons to launch DemandPagingGUI and MultiThreadGUI</li>
+    <li>AI output mode selection (Concise or Research)</li>
+    <li>Difficulty level selection (Easy, Medium, Hard)</li>
+    <li>Gemini API key management</li>
+</ul>
+
+<h4>3.1.2 Simulation Manager Tab</h4>
+<p>The Simulation Manager allows users to document and track experimental runs:</p>
+<ul>
+    <li>Save simulation runs with metadata (name, category, algorithm, summary)</li>
+    <li>View all saved simulations in a table format</li>
+    <li>Track both page replacement and CPU scheduling experiments</li>
+    <li>Clear simulation history</li>
+    <li>Timestamp recording for each simulation</li>
+</ul>
+
+<h4>3.1.3 Page Replacement Analysis Tab</h4>
+<p>This tab provides comprehensive page replacement algorithm analysis:</p>
+
+<p><strong>Input Configuration:</strong></p>
+<ul>
+    <li>Custom reference string input (space-separated page numbers)</li>
+    <li>Adjustable frame count (1-15 frames)</li>
+    <li>Algorithm selection for step-by-step analysis</li>
+</ul>
+
+<p><strong>Analysis Features:</strong></p>
+<ul>
+    <li>Full comparison of FIFO, LRU, MRU, and OPT algorithms</li>
+    <li>Step-by-step execution table showing frame state changes</li>
+    <li>Real-time metrics: page faults, hits, hit ratio percentage</li>
+    <li>Visual line graph comparing fault counts</li>
+</ul>
+
+<p><strong>AI-Powered Features:</strong></p>
+<ul>
+    <li>Generate reference strings based on difficulty level</li>
+    <li>Detailed explanations of comparison results</li>
+    <li>Algorithm recommendations with reasoning</li>
+    <li>Research-grade analysis reports</li>
+</ul>
+
+<h4>3.1.4 CPU Scheduling Analysis Tab</h4>
+<p>This tab enables comparison of CPU scheduling algorithms:</p>
+
+<p><strong>Input Configuration:</strong></p>
+<ul>
+    <li>Multi-process input in CSV format (ProcessID, Arrival, Burst, Priority)</li>
+    <li>Adjustable Round-Robin quantum (1-10 time units)</li>
+</ul>
+
+<p><strong>Analysis Capabilities:</strong></p>
+<ul>
+    <li>Compare FCFS, Priority, and Round-Robin algorithms</li>
+    <li>Calculate average waiting time, turnaround time, and throughput</li>
+    <li>Display Gantt chart timelines for each algorithm</li>
+    <li>Visual line graph of waiting times</li>
+</ul>
+
+<p><strong>AI Features:</strong></p>
+<ul>
+    <li>Generate realistic process datasets</li>
+    <li>Explain workload characteristics</li>
+    <li>Detect scheduling anomalies (starvation, convoy effect)</li>
+    <li>Provide optimization recommendations</li>
+</ul>
+
+<h4>3.1.5 AI Research Copilot Tab</h4>
+<p>The AI Research Copilot provides centralized AI analysis:</p>
+<ul>
+    <li>Display all AI-generated outputs</li>
+    <li>Structured analysis in IEEE-friendly format (Research mode)</li>
+    <li>Concise bullet-point summaries (Concise mode)</li>
+    <li>Full conversation history of AI interactions</li>
+</ul>
+
+<h3>3.2 DemandPagingGUI - Single-Thread Simulator</h3>
+<p>The DemandPagingGUI provides interactive visualization of page replacement algorithms in a single-threaded environment.</p>
+
+<h4>3.2.1 Input Controls</h4>
+<ul>
+    <li>Number of frames: 1-10 configurable memory frames</li>
+    <li>Reference string: custom page access sequence</li>
+    <li>Algorithm selector: dropdown for FIFO, LRU, MRU, OPT</li>
+    <li>Default example pre-loaded for quick demonstration</li>
+</ul>
+
+<h4>3.2.2 Execution Modes</h4>
+<p><strong>Step-by-Step Mode:</strong> Users can advance one page reference at a time using the "Next Step" button, ideal for detailed algorithm observation and instructor-led demonstrations.</p>
+
+<p><strong>Automatic Play Mode:</strong> The "Play/Pause" button toggles continuous execution with 1-second intervals between steps, useful for quick demonstrations.</p>
+
+<p><strong>Reset Functionality:</strong> Users can clear the current simulation and return to the initial configuration state for repeated experiments.</p>
+
+<h4>3.2.3 Visual Feedback System</h4>
+<p>The simulator provides comprehensive visual feedback:</p>
+<ul>
+    <li>Visual boxes representing memory frames with large, bold page numbers</li>
+    <li>Color-coded states: GREEN for page hits, RED for page faults, WHITE for empty frames</li>
+    <li>Current step counter (e.g., "Step: 8/13")</li>
+    <li>Real-time hit and fault counts</li>
+    <li>Current hit ratio percentage</li>
+    <li>Event descriptions (HIT or FAULT with page number)</li>
+    <li>Evicted page notifications</li>
+</ul>
+
+<h4>3.2.4 Comparison Tool</h4>
+<p>The comparison tool displays a bar chart visualization comparing all four algorithms on the same reference string. Results are sorted by fault count from best to worst, with color-coded bars for easy distinction. A statistical summary popup shows final metrics including hit ratio, miss ratio, and algorithm ranking.</p>
+
+<h3>3.3 MultiThreadGUI - Multithreaded Concurrency Simulator</h3>
+<p>The MultiThreadGUI demonstrates concurrent thread execution, synchronization, and deadlock scenarios through a tabbed interface.</p>
+
+<h4>3.3.1 Configuration Tab</h4>
+<p><strong>Global Settings:</strong></p>
+<ul>
+    <li>Number of threads: 3-8 concurrent threads</li>
+    <li>Scheduling algorithm: FCFS, Round-Robin (with adjustable quantum 1-10), or Priority-based</li>
+    <li>Synchronization type: None (race conditions), Mutex (exclusive locks), or Semaphore (counting semaphore with 1-5 permits)</li>
+    <li>Page replacement algorithm: FIFO, LRU, MRU, or OPT</li>
+    <li>Memory frames: 2-10 shared frames</li>
+</ul>
+
+<p><strong>Per-Thread Configuration:</strong></p>
+<ul>
+    <li>Individual reference strings for each thread</li>
+    <li>Priority assignment (1-10, higher value equals more priority)</li>
+    <li>Dynamic thread configuration panel</li>
+</ul>
+
+<p><strong>Pre-configured Scenarios:</strong></p>
+<ol>
+    <li><strong>Race Condition Demo:</strong> Multiple threads accessing same pages without synchronization</li>
+    <li><strong>Deadlock Scenario:</strong> Threads create circular wait with mutex-based locking</li>
+    <li><strong>Priority Inversion:</strong> High-priority thread blocked by low-priority thread holding lock</li>
+    <li><strong>Starvation Example:</strong> Low-priority thread never executes due to priority-based scheduling</li>
+    <li><strong>Thrashing Simulation:</strong> Too many threads with too few frames causing excessive page faults</li>
+</ol>
+
+<h4>3.3.2 Simulation Execution Tab</h4>
+<p><strong>Control Panel:</strong></p>
+<ul>
+    <li>Start button: Initialize and begin simulation</li>
+    <li>Pause/Resume button: Toggle execution state</li>
+    <li>Step button: Execute one simulation step manually</li>
+    <li>Reset button: Clear and return to configuration</li>
+    <li>Progress bar: Visual completion percentage</li>
+    <li>Step counter: Current step / total steps display</li>
+</ul>
+
+<p><strong>Visualization Components:</strong></p>
+<ul>
+    <li><strong>Memory Frames Display:</strong> Shared memory frames shown as color-coded boxes with thread ownership indicated by color and page numbers displayed</li>
+    <li><strong>Thread Status Panel:</strong> Real-time state indicators showing RUNNING, READY, WAITING, BLOCKED, or COMPLETED status with per-thread statistics</li>
+    <li><strong>Lock Status Panel:</strong> Lock availability indicators, current holder identification, waiting queue display, and acquisition counts</li>
+    <li><strong>Execution Log:</strong> Chronological event timeline tracking page accesses, context switches, lock operations, and thread state changes</li>
+</ul>
+
+<h4>3.3.3 Statistics and Analysis Tab</h4>
+<p><strong>Global Metrics:</strong></p>
+<ul>
+    <li>Total simulation steps executed</li>
+    <li>Total context switches</li>
+    <li>Aggregate page faults and hits</li>
+    <li>Global hit ratio</li>
+    <li>System throughput</li>
+</ul>
+
+<p><strong>Per-Thread Metrics:</strong></p>
+<ul>
+    <li>Reference string length</li>
+    <li>Individual page faults and hits</li>
+    <li>Thread-specific hit ratio</li>
+    <li>Context switch count</li>
+    <li>Final thread state</li>
+    <li>Priority information</li>
+</ul>
+
+<p><strong>Lock Statistics (if enabled):</strong></p>
+<ul>
+    <li>Lock names and types</li>
+    <li>Total acquisitions</li>
+    <li>Average hold time</li>
+    <li>Contention metrics</li>
+</ul>
+
+<p><strong>Deadlock Information (if detected):</strong></p>
+<ul>
+    <li>Deadlocked thread identification</li>
+    <li>Resource allocation graph visualization</li>
+    <li>Circular wait chains</li>
+    <li>Deadlock detection timestamp</li>
+</ul>
+
+<h2>4. Features and Functionality</h2>
+
+<h3>4.1 Page Replacement Features</h3>
+
+<h4>4.1.1 Algorithm Support</h4>
+<p>The simulator implements four page replacement algorithms:</p>
+
+<p><strong>FIFO (First-In-First-Out):</strong> Pages are evicted in order of arrival using a simple queue-based implementation. This algorithm has low overhead but suffers from Belady's Anomaly where increasing the number of frames can paradoxically increase page faults.</p>
+
+<p><strong>LRU (Least Recently Used):</strong> Evicts the page that has not been accessed for the longest time. This algorithm is excellent for temporal locality and is the industry standard. It has moderate implementation complexity and does not suffer from Belady's Anomaly.</p>
+
+<p><strong>MRU (Most Recently Used):</strong> Evicts the most recently accessed page. While counter-intuitive, this algorithm is useful for certain cyclic patterns and serves as an educational comparison point.</p>
+
+<p><strong>OPT (Optimal):</strong> Evicts the page that will not be used for the longest time in the future. This is the theoretical best performance algorithm but requires future knowledge and is not implementable in practice. It serves as a performance baseline for comparison.</p>
+
+<h4>4.1.2 Interactive Features</h4>
+<ul>
+    <li>Step-by-step execution with visual frame updates</li>
+    <li>Automatic playback mode with adjustable speed</li>
+    <li>Color-coded visual feedback for hits and faults</li>
+    <li>Real-time statistics display</li>
+    <li>Algorithm comparison charts</li>
+    <li>Eviction notifications</li>
+</ul>
+
+<h3>4.2 CPU Scheduling Features</h3>
+
+<h4>4.2.1 Scheduling Algorithms</h4>
+
+<p><strong>FCFS (First-Come-First-Served):</strong> Non-preemptive algorithm with simple implementation. Processes execute in arrival order. This algorithm has low overhead but suffers from the convoy effect where short processes wait for long processes.</p>
+
+<p><strong>Priority-Based Scheduling:</strong> Can be preemptive or non-preemptive with higher priority processes executing first. This flexible algorithm can cause starvation of low-priority processes and demonstrate priority inversion issues.</p>
+
+<p><strong>Round-Robin:</strong> Preemptive time-slicing algorithm providing fair CPU allocation. Performance is quantum-dependent with good response time characteristics. Best suited for time-sharing systems.</p>
+
+<h4>4.2.2 Metrics Calculated</h4>
+<ul>
+    <li>Average waiting time</li>
+    <li>Average turnaround time</li>
+    <li>Throughput (processes per time unit)</li>
+    <li>Individual process completion times</li>
+    <li>Gantt chart timeline generation</li>
+</ul>
+
+<h3>4.3 Multithreading Features</h3>
+
+<h4>4.3.1 Thread Management</h4>
+<ul>
+    <li>Support for 3-8 concurrent threads</li>
+    <li>Individual reference strings per thread</li>
+    <li>Priority assignment (1-10 scale)</li>
+    <li>Thread state management (RUNNING, READY, WAITING, BLOCKED, COMPLETED)</li>
+    <li>Context switching with overhead tracking</li>
+</ul>
+
+<h4>4.3.2 Synchronization Mechanisms</h4>
+
+<p><strong>Mutex (Mutual Exclusion):</strong> Provides exclusive access to resources using a binary semaphore model. Prevents race conditions but can cause deadlock. Features simple acquire/release operations.</p>
+
+<p><strong>Semaphore:</strong> Counting semaphore with configurable permits (1-5). Supports resource pooling and flexible concurrency control. Reduces lock contention compared to mutex.</p>
+
+<h4>4.3.3 Deadlock Detection</h4>
+<p>The system implements Resource Allocation Graph (RAG) cycle detection using Depth-First Search (DFS). Features include:</p>
+<ul>
+    <li>Automatic detection during simulation</li>
+    <li>Visual notification when deadlock occurs</li>
+    <li>Identification of all deadlocked threads</li>
+    <li>Display of circular wait chains</li>
+    <li>Timestamp of detection</li>
+</ul>
+
+<h3>4.4 AI Integration Features</h3>
+
+<h4>4.4.1 Dataset Generation</h4>
+<p><strong>Reference String Generation:</strong> Creates difficulty-based reference strings (Easy, Medium, Hard) with realistic page access patterns considering locality principles. Generates benchmark-quality datasets suitable for algorithm testing.</p>
+
+<p><strong>CPU Process Generation:</strong> Creates process datasets with configurable process counts, varied arrival times, realistic burst times, and priority distribution. Output is in CSV format ready for immediate use.</p>
+
+<h4>4.4.2 Explanation and Analysis</h4>
+<p><strong>Page Replacement Analysis:</strong> Provides algorithm comparison explanations, performance reasoning, locality impact discussion, and best algorithm recommendations based on workload characteristics.</p>
+
+<p><strong>CPU Scheduling Analysis:</strong> Delivers workload characterization, algorithm suitability explanations, quantum impact analysis, and optimization suggestions tailored to the specific process mix.</p>
+
+<h4>4.4.3 Output Modes</h4>
+
+<p><strong>Concise Mode:</strong> Provides bullet-point summaries with quick actionable insights, direct recommendations, and minimal technical jargon. Ideal for quick decision-making.</p>
+
+<p><strong>Research Mode:</strong> Generates IEEE-friendly structured reports with sections for Objective, Findings, Evidence, Threats to Validity, and Recommendations. Uses academic language and provides citation-ready, comprehensive analysis.</p>
+
+<h4>4.4.4 Anomaly Detection</h4>
+<p>The AI system detects operating system simulation anomalies including:</p>
+<ul>
+    <li><strong>Thrashing Detection:</strong> Identifies excessive page fault rates</li>
+    <li><strong>Starvation Detection:</strong> Finds threads that never execute</li>
+    <li><strong>Deadlock Risks:</strong> Identifies circular wait patterns</li>
+    <li><strong>Unfair Scheduling:</strong> Detects imbalanced CPU allocation</li>
+    <li><strong>Performance Degradation:</strong> Identifies excessive context switch overhead</li>
+</ul>
+
+<p>Each detection includes confidence levels, mitigation strategies, root cause analysis, and prevention recommendations.</p>
+
+<h2>5. Algorithm Implementations</h2>
+
+<h3>5.1 Page Replacement Algorithms</h3>
+
+<h4>5.1.1 FIFO Implementation</h4>
+<p>The FIFO algorithm uses a queue data structure to track page arrival order. When a page fault occurs and all frames are full, the algorithm removes the page at the front of the queue (oldest page) and adds the new page to the back. Time complexity is O(1) for eviction decisions.</p>
+
+<h4>5.1.2 LRU Implementation</h4>
+<p>The LRU algorithm maintains a list of pages ordered by recency of access. On each page access, the page is moved to the end of the list. When eviction is needed, the page at the front of the list (least recently used) is removed. Time complexity is O(n) for list reordering.</p>
+
+<h4>5.1.3 MRU Implementation</h4>
+<p>Similar to LRU but removes the page at the end of the recency list (most recently used). This algorithm is useful for sequential scan patterns where the most recently accessed page is unlikely to be needed again soon.</p>
+
+<h4>5.1.4 OPT Implementation</h4>
+<p>The optimal algorithm looks ahead in the reference string to find which resident page will be used farthest in the future. This page is selected for eviction. While not practical for real systems, it provides the theoretical minimum number of page faults for comparison purposes.</p>
+
+<h3>5.2 CPU Scheduling Algorithms</h3>
+
+<h4>5.2.1 FCFS Implementation</h4>
+<p>Processes are sorted by arrival time and executed in order. Each process runs to completion before the next begins. Implementation uses a simple queue with O(n log n) sorting complexity for initial ordering.</p>
+
+<h4>5.2.2 Priority Scheduling Implementation</h4>
+<p>Maintains a ready queue sorted by priority. At each scheduling decision, the highest priority ready process is selected. Uses comparison-based selection with O(n) complexity per scheduling decision.</p>
+
+<h4>5.2.3 Round-Robin Implementation</h4>
+<p>Processes are organized in a circular queue. Each process executes for one time quantum before moving to the back of the queue. If a process completes within its quantum, it is removed from the queue. Implementation uses a queue with quantum counter.</p>
+
+<h3>5.3 Deadlock Detection Algorithm</h3>
+
+<h4>5.3.1 Resource Allocation Graph</h4>
+<p>The system builds a directed graph where:</p>
+<ul>
+    <li>Nodes represent threads and locks</li>
+    <li>Edges from threads to locks represent waiting relationships</li>
+    <li>Edges from locks to threads represent holding relationships</li>
+</ul>
+
+<h4>5.3.2 Cycle Detection</h4>
+<p>Uses Depth-First Search to detect cycles in the resource allocation graph. A cycle indicates a circular wait condition, which is necessary for deadlock. The algorithm maintains a visited set and a recursion stack to identify cycles in O(V + E) time complexity where V is vertices and E is edges.</p>
+
+<h2>6. AI Integration</h2>
+
+<h3>6.1 Gemini API Integration</h3>
+
+<h4>6.1.1 Configuration</h4>
+<p>The API key is stored in the <code>ai_config.properties</code> file for secure local storage. Users can update the key through the GUI-based interface without modifying code.</p>
+
+<h4>6.1.2 API Client</h4>
+<p>The GeminiAIClient class handles HTTP communication with the Gemini API using Java's built-in HttpClient. It implements proper error handling, timeout management, and response parsing.</p>
+
+<h3>6.2 AI Features</h3>
+
+<h4>6.2.1 Intelligent Dataset Generation</h4>
+<p>The AI generates contextually appropriate datasets based on difficulty level. For reference strings, it creates patterns that exhibit varying degrees of locality. For CPU processes, it generates realistic arrival times, burst times, and priorities that create interesting scheduling scenarios.</p>
+
+<h4>6.2.2 Contextual Analysis</h4>
+<p>The AI analyzes simulation results in context, considering factors such as workload characteristics, algorithm behavior patterns, and performance trade-offs. It provides insights that go beyond simple metric comparison.</p>
+
+<h4>6.2.3 Recommendation Engine</h4>
+<p>Based on simulation results and workload analysis, the AI recommends optimal algorithms and parameter settings. Recommendations include reasoning grounded in operating system principles.</p>
+
+<h3>6.3 Research Mode Output</h3>
+
+<h4>6.3.1 Structured Analysis Format</h4>
+<p>Research mode output follows academic conventions:</p>
+<ul>
+    <li><strong>Objective:</strong> Clear statement of analysis goals</li>
+    <li><strong>Findings:</strong> Key observations from simulation data</li>
+    <li><strong>Evidence:</strong> Specific metrics and measurements supporting findings</li>
+    <li><strong>Threats to Validity:</strong> Limitations and potential confounding factors</li>
+    <li><strong>Recommendations:</strong> Actionable suggestions based on evidence</li>
+</ul>
+
+<h2>7. Installation and Usage</h2>
+
+<h3>7.1 System Requirements</h3>
+
+<h4>7.1.1 Minimum Requirements</h4>
+<ul>
+    <li>Java Development Kit (JDK) version 11 or higher</li>
+    <li>2GB RAM</li>
+    <li>Display resolution: 1024 x 768 or higher</li>
+    <li>Gemini API key for AI features (optional)</li>
+</ul>
+
+<h4>7.1.2 Recommended Requirements</h4>
+<ul>
+    <li>JDK version 17 or higher</li>
+    <li>4GB RAM</li>
+    <li>Display resolution: 1920 x 1080</li>
+    <li>Multi-core processor for responsive GUI</li>
+</ul>
+
+<h3>7.2 Compilation</h3>
+<p>To compile the project, navigate to the project directory and execute:</p>
+<pre>cd /tmp/cc-agent/65214688/project
+javac *.java</pre>
+
+<p>This command compiles all Java source files in the project directory.</p>
+
+<h3>7.3 Execution</h3>
+
+<h4>7.3.1 Launch Integrated Dashboard</h4>
+<pre>java SimulationDashboard</pre>
+<p>This launches the main dashboard providing access to all features.</p>
+
+<h4>7.3.2 Launch Single-Thread Simulator</h4>
+<pre>java DemandPagingGUI</pre>
+<p>This launches the standalone single-thread page replacement simulator.</p>
+
+<h4>7.3.3 Launch Multithreaded Simulator</h4>
+<pre>java MultiThreadGUI</pre>
+<p>This launches the standalone multithreaded concurrency simulator.</p>
+
+<h3>7.4 Basic Usage Workflow</h3>
+
+<h4>7.4.1 For Page Replacement Analysis</h4>
+<ol>
+    <li>Launch SimulationDashboard</li>
+    <li>Navigate to "Page Replacement Analysis" tab</li>
+    <li>Enter reference string (or use AI to generate one)</li>
+    <li>Set number of frames</li>
+    <li>Click "Run Full Comparison"</li>
+    <li>Review metrics table and line graph</li>
+    <li>Optionally click "Generate Step Table" for detailed analysis</li>
+    <li>Use AI features for explanations and recommendations</li>
+</ol>
+
+<h4>7.4.2 For CPU Scheduling Analysis</h4>
+<ol>
+    <li>Navigate to "CPU Scheduling Analysis" tab</li>
+    <li>Enter process data in CSV format (or use AI to generate)</li>
+    <li>Set Round-Robin quantum value</li>
+    <li>Click "Compare CPU Algorithms"</li>
+    <li>Review metrics table, line graph, and Gantt charts</li>
+    <li>Use AI features for workload analysis and recommendations</li>
+</ol>
+
+<h4>7.4.3 For Multithreaded Simulation</h4>
+<ol>
+    <li>Launch MultiThreadGUI from dashboard or directly</li>
+    <li>Configure global settings (threads, scheduling, synchronization)</li>
+    <li>Configure per-thread reference strings and priorities</li>
+    <li>Optionally load a pre-configured scenario</li>
+    <li>Click "Start" to begin simulation</li>
+    <li>Use "Pause" and "Step" for detailed observation</li>
+    <li>Review statistics tab after completion</li>
+</ol>
+
+<h2>8. Educational Value</h2>
+
+<h3>8.1 Learning Objectives</h3>
+
+<h4>8.1.1 Virtual Memory Concepts</h4>
+<p>Students gain understanding of:</p>
+<ul>
+    <li>Demand paging mechanism and how pages are loaded on-demand</li>
+    <li>Page fault handling and the cost of memory misses</li>
+    <li>Working set concept and memory requirements</li>
+    <li>Locality of reference (temporal and spatial)</li>
+    <li>Thrashing conditions and prevention strategies</li>
+</ul>
+
+<h4>8.1.2 Multithreading Concepts</h4>
+<p>Students learn about:</p>
+<ul>
+    <li>Thread states and lifecycle transitions</li>
+    <li>Context switching and associated overhead</li>
+    <li>Concurrent execution and interleaving</li>
+    <li>Thread scheduling policies and their impact</li>
+    <li>Resource sharing among threads</li>
+</ul>
+
+<h4>8.1.3 Synchronization</h4>
+<p>Topics covered include:</p>
+<ul>
+    <li>Critical sections and mutual exclusion</li>
+    <li>Mutex versus semaphore usage patterns</li>
+    <li>Race conditions and their consequences</li>
+    <li>Deadlock conditions (mutual exclusion, hold and wait, no preemption, circular wait)</li>
+    <li>Priority inversion problems and solutions</li>
+</ul>
+
+<h4>8.1.4 Algorithm Analysis</h4>
+<p>Students develop skills in:</p>
+<ul>
+    <li>Performance metric calculation and interpretation</li>
+    <li>Trade-off evaluation between algorithms</li>
+    <li>Comparison of theoretical versus practical algorithms</li>
+    <li>Complexity analysis of different approaches</li>
+    <li>Optimization strategy development</li>
+</ul>
+
+<h3>8.2 Pedagogical Features</h3>
+
+<h4>8.2.1 Progressive Complexity</h4>
+<p>The learning path progresses through increasing complexity:</p>
+<ol>
+    <li>Begin with single-thread paging to understand basic concepts</li>
+    <li>Move to multithreaded scenarios to introduce concurrency</li>
+    <li>Add synchronization to address race conditions</li>
+    <li>Introduce deadlock scenarios and detection</li>
+    <li>Perform comprehensive performance analysis</li>
+</ol>
+
+<h4>8.2.2 Interactive Learning</h4>
+<p>The system supports active learning through:</p>
+<ul>
+    <li>Interactive experimentation with immediate feedback</li>
+    <li>Real-time metric updates showing algorithm behavior</li>
+    <li>Step-by-step execution for detailed observation</li>
+    <li>Comparative visualizations highlighting differences</li>
+    <li>Scenario-based learning with pre-configured examples</li>
+</ul>
+
+<h4>8.2.3 Research Capabilities</h4>
+<p>Students can conduct research through:</p>
+<ul>
+    <li>Experiment tracking and documentation</li>
+    <li>Reproducible result generation</li>
+    <li>Statistical analysis tools</li>
+    <li>AI-powered insights and explanations</li>
+    <li>Report generation in academic format</li>
+</ul>
+
+<h3>8.3 Usage Scenarios</h3>
+
+<h4>8.3.1 Understanding Belady's Anomaly</h4>
+<p>Students can observe the FIFO paradox where increasing memory frames increases page faults. Using reference string "1 2 3 4 1 2 5 1 2 3 4 5" with 3 frames yields 9 faults, but with 4 frames yields 10 faults, demonstrating that FIFO does not respect the stack property.</p>
+
+<h4>8.3.2 Observing Deadlock</h4>
+<p>The deadlock scenario demonstrates circular wait conditions. Students configure threads with conflicting lock requirements, observe threads blocking each other, and see automatic deadlock detection with resource allocation graph visualization.</p>
+
+<h4>8.3.3 Studying Priority Inversion</h4>
+<p>Students configure three threads with priorities 10, 5, and 1. With mutex synchronization enabled, they observe the high-priority thread waiting for a lock held by the low-priority thread while the medium-priority thread executes, demonstrating the need for priority inheritance protocols.</p>
+
+<h4>8.3.4 Analyzing Thrashing</h4>
+<p>With six threads and only three frames, students observe excessive page faults, poor hit ratios across all threads, and frequent evictions. AI anomaly detection confirms thrashing conditions and suggests mitigation strategies.</p>
+
+<h2>9. Technical Specifications</h2>
+
+<h3>9.1 Design Patterns</h3>
+
+<h4>9.1.1 Model-View-Controller</h4>
+<p>The architecture separates concerns:</p>
+<ul>
+    <li><strong>Models:</strong> ProcessThread, LockResource, FrameEntry represent data</li>
+    <li><strong>Views:</strong> Swing GUI components display information</li>
+    <li><strong>Controllers:</strong> Simulators and schedulers manage logic</li>
+</ul>
+
+<h4>9.1.2 Observer Pattern</h4>
+<p>GUI components observe model changes and update automatically. Event-driven architecture ensures responsive user interface with thread-safe updates.</p>
+
+<h4>9.1.3 Strategy Pattern</h4>
+<p>Algorithms are interchangeable at runtime. Users can select different page replacement or scheduling algorithms without code modification, supporting extensible design.</p>
+
+<h3>9.2 Data Structures</h3>
+
+<h4>9.2.1 Page Replacement</h4>
+<ul>
+    <li>ArrayList for frame storage providing O(1) access</li>
+    <li>LinkedList for FIFO queue with O(1) enqueue/dequeue</li>
+    <li>List-based LRU tracking with O(n) reordering</li>
+</ul>
+
+<h4>9.2.2 Thread Scheduling</h4>
+<ul>
+    <li>Queue for FCFS with FIFO ordering</li>
+    <li>Priority queue for priority scheduling</li>
+    <li>Round-robin queue with quantum counter</li>
+</ul>
+
+<h4>9.2.3 Deadlock Detection</h4>
+<ul>
+    <li>Graph representation using adjacency lists</li>
+    <li>DFS for cycle detection with recursion stack</li>
+    <li>Resource allocation matrix tracking ownership</li>
+</ul>
+
+<h3>9.3 Thread Safety</h3>
+
+<h4>9.3.1 Synchronization Mechanisms</h4>
+<p>The system uses Java's <code>synchronized</code> keyword for critical sections. Thread-safe collections prevent concurrent modification exceptions. GUI updates use <code>SwingUtilities.invokeLater()</code> to ensure execution on the Event Dispatch Thread.</p>
+
+<h4>9.3.2 Concurrency Control</h4>
+<p>Lock waiting queues manage blocked threads. State transition management prevents invalid state changes. Race condition prevention through proper synchronization.</p>
+
+<h3>9.4 Performance Considerations</h3>
+
+<h4>9.4.1 Algorithm Efficiency</h4>
+<ul>
+    <li>O(n) page replacement decisions</li>
+    <li>O(1) FIFO eviction using queue</li>
+    <li>O(n) optimal lookahead in reference string</li>
+    <li>O(n log n) scheduling with sorting</li>
+</ul>
+
+<h4>9.4.2 Memory Management</h4>
+<ul>
+    <li>Efficient data structure reuse to minimize allocations</li>
+    <li>Minimal object creation during simulation</li>
+    <li>Event aggregation to reduce memory footprint</li>
+</ul>
+
+<h2>10. Conclusion</h2>
+
+<h3>10.1 Project Summary</h3>
+<p>This Virtual Memory Simulator Suite represents a comprehensive educational platform that successfully combines theoretical operating system concepts with practical, interactive simulation. The project achieves its objectives of providing hands-on learning tools for page replacement, CPU scheduling, multithreading, and concurrency control.</p>
+
+<h3>10.2 Key Achievements</h3>
+
+<h4>10.2.1 Comprehensive Coverage</h4>
+<p>The system covers fundamental OS concepts including virtual memory management with four page replacement algorithms, CPU scheduling with three scheduling policies, thread synchronization with mutex and semaphore primitives, and automatic deadlock detection.</p>
+
+<h4>10.2.2 Interactive Learning Environment</h4>
+<p>The GUI-based simulators provide immediate visual feedback, step-by-step execution capabilities, real-time statistics, and comparative analysis tools. Students can experiment freely and observe algorithm behavior in detail.</p>
+
+<h4>10.2.3 AI Integration</h4>
+<p>The integration of Google Gemini API adds intelligent features including dataset generation, contextual analysis, algorithm recommendations, and anomaly detection. The dual output modes (Concise and Research) serve different user needs effectively.</p>
+
+<h4>10.2.4 Research Support</h4>
+<p>The simulation manager, statistical analysis tools, and structured reporting capabilities make the suite suitable for research purposes beyond basic education.</p>
+
+<h3>10.3 Educational Impact</h3>
+
+<h4>10.3.1 Conceptual Understanding</h4>
+<p>Visual simulation helps students develop intuition for abstract concepts. Immediate feedback reinforces learning. Comparative analysis builds critical thinking skills.</p>
+
+<h4>10.3.2 Practical Skills</h4>
+<p>Students gain experience with experimental methodology, performance measurement, trade-off analysis, and result interpretation. These skills transfer to real-world system design and evaluation.</p>
+
+<h4>10.3.3 Advanced Topics</h4>
+<p>The multithreaded simulator exposes students to advanced concepts like race conditions, deadlock, priority inversion, and thrashing in a controlled, observable environment.</p>
+
+<h3>10.4 Technical Excellence</h3>
+<p>The implementation demonstrates software engineering best practices including modular architecture, design pattern application, comprehensive error handling, and user-friendly interface design. The codebase is maintainable and extensible for future enhancements.</p>
+
+<h3>10.5 Future Directions</h3>
+
+<h4>10.5.1 Potential Enhancements</h4>
+<p>Future work could include additional algorithms such as disk scheduling and memory allocation strategies, expanded AI capabilities with natural language queries, enhanced visualization with 3D graphics, and export functionality for reports and videos.</p>
+
+<h4>10.5.2 Broader Applications</h4>
+<p>The framework could be extended to simulate other system concepts including network protocols, file systems, inter-process communication, and distributed systems.</p>
+
+<h3>10.6 Conclusion</h3>
+<p>The Virtual Memory Simulator Suite successfully achieves its goal of providing a comprehensive, interactive, and intelligent platform for learning operating system concepts. It combines traditional simulation with modern AI capabilities to create an effective educational tool suitable for students, educators, and researchers. The project demonstrates that complex system concepts can be made accessible and engaging through thoughtful design and implementation.</p>
+
+<h3>10.7 Acknowledgments</h3>
+<p>This project was developed as a Final Year Project for the Information Technology program. It integrates concepts from operating systems, software engineering, artificial intelligence, and user interface design to create a cohesive educational platform.</p>
+
+<p style="text-align: center; margin-top: 36pt;">
+    <strong>END OF DOCUMENT</strong>
+</p>
+
+</body>
+</html>
